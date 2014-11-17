@@ -102,7 +102,7 @@ try
 	$shippingAddress->firstName		= $_POST['shipping_first_name'];
 	$shippingAddress->lastName		= $_POST['shipping_last_name'];
 	$shippingAddress->address		= $_POST['shipping_address'];
-	$shippingAddress->email			= $_POST['shipping_email'];
+	$shippingAddress->email		= $_POST['shipping_email'];
 	$shippingAddress->mobilePhone		= $_POST['shipping_mobile_phone'];
 	$objPmReqCard->invoice->setShippingAddress($shippingAddress);
 
