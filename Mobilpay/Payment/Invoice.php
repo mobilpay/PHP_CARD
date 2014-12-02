@@ -1,7 +1,7 @@
 <?php
 /**
  * Class Mobilpay_Payment_Invoice
- * @copyright NETOPIA System
+ * @copyright NETOPIA
  * @author Claudiu Tudose
  * @version 1.0
  *

@@ -4,7 +4,7 @@
  * mobilPay
  *
  * @package   Mobilpay_Payment_Request_Notify
- * @copyright  Copyright (c) 2007-2013 Netopia
+ * @copyright  Copyright (c)NETOPIA
  * @author      Claudiu Tudose <claudiu.tudose@netopia-system.com>
  *
  * This class is used for the IPN

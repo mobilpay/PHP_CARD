@@ -2,7 +2,7 @@
 
 /**
  * Class Mobilpay_Payment_Address
- * @copyright NETOPIA System
+ * @copyright NETOPIA
  * @author Claudiu Tudose
  * @version 1.0
  * 

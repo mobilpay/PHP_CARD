@@ -4,8 +4,8 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="author" content="NETOPIA System" />
-<meta http-equiv="copyright" content="(c)2007-2009 N E T O P I A System" />
+<meta http-equiv="author" content="NETOPIA" />
+<meta http-equiv="copyright" content="(c)NETOPIA" />
 <meta http-equiv="rating" content="general" />
 <meta http-equiv="distribution" content="general" />
 <link href="http://www.mobilpay.ro/assets/themes/public/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
