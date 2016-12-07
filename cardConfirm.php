@@ -23,6 +23,7 @@ if (strcasecmp($_SERVER['REQUEST_METHOD'], 'post') == 0)
 		#uncomment the line below in order to see the content of the request
 		//print_r($objPmReq);
 		$errorCode = $objPmReq->objPmNotify->errorCode;
+		$rrn = $objPmReq->objPmNotify->rrn;
 		// action = status only if the associated error code is zero
 		if ($errorCode == "0") {
 		    	switch($objPmReq->objPmNotify->action)
