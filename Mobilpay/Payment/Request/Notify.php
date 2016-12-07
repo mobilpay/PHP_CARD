@@ -42,6 +42,7 @@ class Mobilpay_Payment_Request_Notify {
     public $paidByPhone = null;
     public $validationCode = null;
     public $installments = null;
+    public $rrn = null;
 
     /**
      *
@@ -116,6 +117,11 @@ class Mobilpay_Payment_Request_Notify {
         if ($elems->length == 1) {
             $this->issuer = $elems->item(0)->nodeValue;
         }
+        $elems = $elem->getElementsByTagName('rrn');
+		if ($elems->length == 1)
+		{
+			$this->rrn = $elems->item(0)->nodeValue;
+		}
         $elems = $elem->getElementsByTagName('purchase');
         if ($elems->length == 1) {
             $this->purchaseId = $elems->item(0)->nodeValue;
@@ -274,6 +280,12 @@ class Mobilpay_Payment_Request_Notify {
             $elem->nodeValue = $this->pan_masked;
             $xmlNotifyElem->appendChild($elem);
         }
+        if (is_null($this->rrn) == FALSE)
+		{
+			$elem = $xmlDoc->createElement('rrn');
+			$elem->nodeValue = $this->rrn;
+			$xmlNotifyElem->appendChild($elem);
+		}
         if (is_null($this->paymentInstrumentId) == FALSE) {
             $elem = $xmlDoc->createElement('payment_instrument_id');
             $elem->nodeValue = $this->paymentInstrumentId;
