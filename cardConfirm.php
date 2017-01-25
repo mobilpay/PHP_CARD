@@ -22,10 +22,9 @@ if (strcasecmp($_SERVER['REQUEST_METHOD'], 'post') == 0)
 		$objPmReq = Mobilpay_Payment_Request_Abstract::factoryFromEncrypted($_POST['env_key'], $_POST['data'], $privateKeyFilePath);
 		#uncomment the line below in order to see the content of the request
 		//print_r($objPmReq);
-		$errorCode = $objPmReq->objPmNotify->errorCode;
 		$rrn = $objPmReq->objPmNotify->rrn;
 		// action = status only if the associated error code is zero
-		if ($errorCode == "0") {
+		if ($objPmReq->objPmNotify->errorCode == 0) {
 		    	switch($objPmReq->objPmNotify->action)
 		    	{
 				#orice action este insotit de un cod de eroare si de un mesaj de eroare. Acestea pot fi citite folosind $cod_eroare = $objPmReq->objPmNotify->errorCode; respectiv $mesaj_eroare = $objPmReq->objPmNotify->errorMessage;
