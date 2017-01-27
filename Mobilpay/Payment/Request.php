@@ -171,7 +171,7 @@ class Mobilpay_Payment_Request
 		$params = $this->builParametersList();
 		if(is_null($params))
 			return false;
-		$src_data = Mobilpay_Payment_Request::buildQueryString($params);
+		$src_data = $this->buildQueryString($params);
 		$enc_data = '';
 		$env_keys = array();
 		$result = openssl_seal($src_data, $enc_data, $env_keys, array($public_key));
