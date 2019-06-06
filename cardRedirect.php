@@ -82,7 +82,7 @@ try
 	//$objPmReqCard->invoice->selectedInstallments= '3';
         //platile ulterioare vor contine in request si informatiile despre token. Prima plata nu va contine linia de mai jos.
         $objPmReqCard->invoice->tokenId = 'token_id';
-	$objPmReqCard->invoice->details		= 'Plata cu card-ul prin mobilPay';
+	$objPmReqCard->invoice->details		= 'Plata online cu cardul';
 	
 	#detalii cu privire la adresa posesorului cardului
 	#details on the cardholder address (optional)
