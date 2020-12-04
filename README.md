@@ -1,18 +1,19 @@
 # NETOPIA Payments API
 
-## Module Card in PHP language
+## Card Payment Module in PHP language
 This module made to use as an example of immplimentaion for online payment via Card in PHP 
 
-## Payment Request/Response Flow
+## Generic Payment Request/Response Flow
 <img src="img/NETOPIA_Payments_flow.png">
 
-The user will redirect from Merchant website to NETOPIA Payments server together with a payment request.
+The user will be redirected from the Merchant's website to NETOPIA Payments server together with a payment request.
 
 - ### Payment request 
     You need to send Payment request to NETOPIA Payments by using **POST Method** including 2 variable **env_key** and **data**
-    - env_key : public key generated upon
+    - env_key : envelope key
 payment encryption
-    - data : 
+    - data : encrypted data
+ (see the openssl_seal function in PHP)
     
 ## Where to send Request
 - Live : https://secure.mobilpay.ro
