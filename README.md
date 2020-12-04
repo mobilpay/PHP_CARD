@@ -57,9 +57,9 @@ In order to send the payment request to NETOPIA Payments , you need to encrypt t
             </url>
         </order>
 - ### What Confirm URL
-    The confirm URL will use for IPN
+    The confirm URL will be used for IPN (Instant Payment Notification) - i.e. to send information about the transaction's status.
 - ### What redirect URL
-    The redirect URL will use to redirect User to Merchant website from NETOPIA Payments, payment page.
+    The redirect URL will be used to redirect User/Customer back to the Merchant's website from NETOPIA Payments (from the payment page, after the payment is done)
 
 ## Payment Response Structure
 The response from NETOPIA Payments to your confirm URL will be in following structure
@@ -88,7 +88,7 @@ The response from NETOPIA Payments to your confirm URL will be in following stru
     </order>
 
 ## Merchant's Response
-For each call to your confirm URL, you will need to send a response in XML format back to mobilPay, in order to help us understand whether you have successfully recorded the response or not.
+For each call to your confirm URL, the Merchant will need to respond in XML format back to NETOPIA Payments, in order to help us understand whether you have successfully recorded the response or not.
 
 For debugging purposes, you may view your response in mobilPay console (Order – Details – Merchant Communication Log)
 
@@ -100,11 +100,11 @@ The following annotated description of the XML response structure shows the elem
 The attributes of the crc element are only sent if you had any problem recording
 the **IPN**.
 - ### error_type 
-    - set error_type  to "1", if there is a temporary error 
+    - set error_type  to "1", if there is a temporary error (this means that a retry mechanism will be activated and the IPN will be attempted again later on)
     - set error_type  to "2", if there is a permanent error
 
 - ### error_code
-    This is your internal error code.
+    This is your internal error code. If error_code is 0, then everything went fine on your end. Otherwise, based on error_type, there might be one or more retries (up to 20)
 - ### message
     Your message, to helping you find the error.
 
