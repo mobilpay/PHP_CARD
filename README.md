@@ -119,7 +119,7 @@ There are three levels of security:
 3. Secure Sockets Layer (SSL) data transport for the request, optional, if available
 on the merchant side, for the response.
 
-NETOPIA Payments API service supporting the **3-D Secure**
+NETOPIA Payments API service is supporting the **3-D Secure** transactions (both v1 and v2)
 
 <hr>
 
