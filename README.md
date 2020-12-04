@@ -1,7 +1,7 @@
 # NETOPIA Payments API
 
 ## Card Payment Module in PHP language
-This module made to use as an example of immplimentaion for online payment via Card in PHP 
+This module made to use as an example of implementation for online payment via Card in PHP 
 
 ## Generic Payment Request/Response Flow
 <img src="img/NETOPIA_Payments_flow.png">
