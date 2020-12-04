@@ -19,7 +19,7 @@ payment encryption
 - Sandbox : http://sandboxsecure.mobilpay.ro
 
 ## Payment Request Structure
-In order to send the payment request to NETOPIA Payments , you need to send the payment data on **POST** method by following structure.  
+In order to send the payment request to NETOPIA Payments , you need to encrypt the payment data on **POST** method and encapsulate the information using the following structure.  
 
         <?xml version="1.0" encoding="utf-8"?>
         <order type="card" id="string64" timestamp="YYYYmmddHHiiss">
