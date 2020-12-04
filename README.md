@@ -56,9 +56,9 @@ In order to send the payment request to NETOPIA Payments , you need to encrypt t
                 </return>
             </url>
         </order>
-- ### What Confirm URL
+- ### Confirm URL
     The confirm URL will be used for IPN (Instant Payment Notification) - i.e. to send information about the transaction's status.
-- ### What redirect URL
+- ### Redirect URL
     The redirect URL will be used to redirect User/Customer back to the Merchant's website from NETOPIA Payments (from the payment page, after the payment is done)
 
 ## Payment Response Structure
