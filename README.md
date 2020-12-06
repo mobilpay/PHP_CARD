@@ -110,7 +110,7 @@ the **IPN**.
     Your message, to helping you find the error.
 
 ## Security
-The NETOPIA Payments API service is protected to ensure that only authorized members use it.
+The messages exchanged with NETOPIA Payments are protected to ensure that only authorized requests are done.
 
 There are three levels of security:
 1. Request authentication using an API Signature included in the request (Signature field)
@@ -127,7 +127,7 @@ NETOPIA Payments API service is supporting the **3-D Secure** transactions (both
 ### APPENDIX
 #### Error Code Values
     0 – approved
-    16 – card has a risk (i.e. stolen card)
+    16 – card has a risk (e.g. stolen card)
     17 – card number is incorrect
     18 – closed card
     19 – card is expired
