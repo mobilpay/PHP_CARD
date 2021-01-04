@@ -6,7 +6,7 @@ This module made to use as an example of implementation for online payment via C
 ## Generic Payment Request/Response Flow
 <img src="img/NETOPIA_Payments_flow.png">
 
-The user will be redirected from the Merchant's website to NETOPIA Payments server together with a payment request.
+The user will be redirected from the Merchant's website to NETOPIA Payments server together with a payment request. Based on the merchant account settings in NETOPIA's platform, various payment input methods might be displayed (e.g. Google Pay)
 
 - ### Payment request 
     You need to send Payment request to NETOPIA Payments by using **POST Method** including 2 variable **env_key** and **data**
@@ -15,9 +15,10 @@ payment encryption
     - data : encrypted data
  (see the openssl_seal function in PHP)
     
-## Where to send Request
+## Where to send the Request
 - Live : https://secure.mobilpay.ro
 - Sandbox : http://sandboxsecure.mobilpay.ro
+(only HTTP POST requests accepted)
 
 ## Payment Request Structure
 In order to send the payment request to NETOPIA Payments , you need to encrypt the payment data on **POST** method and encapsulate the information using the following structure.  
