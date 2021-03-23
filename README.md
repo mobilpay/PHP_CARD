@@ -1,25 +1,27 @@
 # NETOPIA Payments API
 
-## Module Card in PHP language
-This module made to use as an example of immplimentaion for online payment via Card in PHP 
+## Card Payment Module in PHP language
+This module made to use as an example of implementation for online payment via Card in PHP 
 
-## Payment Request/Response Flow
+## Generic Payment Request/Response Flow
 <img src="img/NETOPIA_Payments_flow.png">
 
-The user will redirect from Merchant website to NETOPIA Payments server together with a payment request.
+The user will be redirected from the Merchant's website to NETOPIA Payments server together with a payment request. Based on the merchant account settings in NETOPIA's platform, various payment input methods might be displayed (e.g. Google Pay)
 
 - ### Payment request 
     You need to send Payment request to NETOPIA Payments by using **POST Method** including 2 variable **env_key** and **data**
-    - env_key : public key generated upon
+    - env_key : envelope key
 payment encryption
-    - data : Is the payment details in XML structure which presented below, at **Payment Request Structure**
+    - data : encrypted data
+ (see the openssl_seal function in PHP)
     
-## Where to send Request
+## Where to send the Request
 - Live : https://secure.mobilpay.ro
 - Sandbox : http://sandboxsecure.mobilpay.ro
+(only HTTP POST requests accepted)
 
 ## Payment Request Structure
-In order to send the payment request to NETOPIA Payments , you need to send the payment data on **POST** method by following structure.  
+In order to send the payment request to NETOPIA Payments , you need to encrypt the payment data on **POST** method and encapsulate the information using the following structure.  
 
         <?xml version="1.0" encoding="utf-8"?>
         <order type="card" id="string64" timestamp="YYYYmmddHHiiss">
@@ -56,10 +58,10 @@ In order to send the payment request to NETOPIA Payments , you need to send the 
                 </return>
             </url>
         </order>
-- ### What Confirm URL
-    The confirm URL will use for IPN
-- ### What redirect URL
-    The redirect URL will use to redirect User to Merchant website from NETOPIA Payments, payment page.
+- ### Confirm URL
+    The confirm URL will be used for IPN (Instant Payment Notification) - i.e. to send information about the transaction's status.
+- ### Redirect URL
+    The redirect URL will be used to redirect User/Customer back to the Merchant's website from NETOPIA Payments (from the payment page, after the payment is done)
 
 ## Payment Response Structure
 The response from NETOPIA Payments to your confirm URL will be in following structure
@@ -88,7 +90,7 @@ The response from NETOPIA Payments to your confirm URL will be in following stru
     </order>
 
 ## Merchant's Response
-For each call to your confirm URL, you will need to send a response in XML format back to mobilPay, in order to help us understand whether you have successfully recorded the response or not.
+For each call to your confirm URL, the Merchant will need to respond in XML format back to NETOPIA Payments, in order to help us understand whether you have successfully recorded the response or not.
 
 For debugging purposes, you may view your response in mobilPay console (Order – Details – Merchant Communication Log)
 
@@ -100,16 +102,16 @@ The following annotated description of the XML response structure shows the elem
 The attributes of the crc element are only sent if you had any problem recording
 the **IPN**.
 - ### error_type 
-    - set error_type  to "1", if there is a temporary error 
+    - set error_type  to "1", if there is a temporary error (this means that a retry mechanism will be activated and the IPN will be attempted again later on)
     - set error_type  to "2", if there is a permanent error
 
 - ### error_code
-    This is your internal error code.
+    This is your internal error code. If error_code is 0, then everything went fine on your end. Otherwise, based on error_type, there might be one or more retries (up to 20)
 - ### message
     Your message, to helping you find the error.
 
 ## Security
-The NETOPIA Payments API service is protected to ensure that only authorized members use it.
+The messages exchanged with NETOPIA Payments are protected to ensure that only authorized requests are done.
 
 There are three levels of security:
 1. Request authentication using an API Signature included in the request (Signature field)
@@ -119,35 +121,36 @@ There are three levels of security:
 3. Secure Sockets Layer (SSL) data transport for the request, optional, if available
 on the merchant side, for the response.
 
-NETOPIA Payments API service supporting the **3-D Secure**
+NETOPIA Payments API service is supporting the **3-D Secure** transactions (both v1 and v2)
 
 <hr>
 
 ### APPENDIX
+#### Error Code Values
+    0 – approved
+    16 – card has a risk (e.g. stolen card)
+    17 – card number is incorrect
+    18 – closed card
+    19 – card is expired
+    20 – insufficient funds
+    21 – cVV2 code incorrect
+    22 – issuer is unavailable
+    32 – amount is incorrect
+    33 – currency is incorrect
+    34 – transaction not permitted to cardholder
+    35 – transaction declined
+    36 – transaction rejected by antifraud filters
+    37 – transaction declined (breaking the law)
+    38 – transaction declined
+    48 – invalid request
+    49 – duplicate PREAUTH
+    50 – duplicate AUTH
+    51 – you can only CANCEL a preauth order
+    52 – you can only CONFIRM a preauth order
+    53 – you can only CREDIT a confirmed order
+    54 – credit amount is higher than auth amount
+    55 – capture amount is higher than preauth amount
+    56 – duplicate request
+    99 – generic error
 
-- #### Error Code Values
-        0 – approved
-        16 – card has a risk (i.e. stolen card)
-        17 – card number is incorrect
-        18 – closed card
-        19 – card is expired
-        20 – insufficient funds
-        21 – cVV2 code incorrect
-        22 – issuer is unavailable
-        32 – amount is incorrect
-        33 – currency is incorrect
-        34 – transaction not permitted to cardholder
-        35 – transaction declined
-        36 – transaction rejected by antifraud filters
-        37 – transaction declined (breaking the law)
-        38 – transaction declined
-        48 – invalid request
-        49 – duplicate PREAUTH
-        50 – duplicate AUTH
-        51 – you can only CANCEL a preauth order
-        52 – you can only CONFIRM a preauth order
-        53 – you can only CREDIT a confirmed order
-        54 – credit amount is higher than auth amount
-        55 – capture amount is higher than preauth amount
-        56 – duplicate request
-        99 – generic error
+
