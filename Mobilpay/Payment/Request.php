@@ -174,7 +174,8 @@ class Mobilpay_Payment_Request
 		$src_data = Mobilpay_Payment_Request::buildQueryString($params);
 		$enc_data = '';
 		$env_keys = array();
-		$result = openssl_seal($src_data, $enc_data, $env_keys, array($public_key));
+		$cipher_algo = 'RC4';
+		$result = openssl_seal($src_data, $enc_data, $env_keys, array($public_key), $cipher_algo);
 		if($result === false)
 		{
 			$env_key	= null;
