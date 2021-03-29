@@ -17,7 +17,7 @@ payment encryption
     
 ## Where to send the Request
 - Live : https://secure.mobilpay.ro
-- Sandbox : http://sandboxsecure.mobilpay.ro
+- Sandbox : https://sandboxsecure.mobilpay.ro
 (only HTTP POST requests accepted)
 
 ## Payment Request Structure
