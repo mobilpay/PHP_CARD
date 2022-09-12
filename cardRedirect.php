@@ -49,7 +49,7 @@ require_once 'Mobilpay/Payment/Address.php';
 
 #for testing purposes, all payment requests will be sent to the sandbox server. Once your account will be active you must switch back to the live server https://secure.mobilpay.ro
 #in order to display the payment form in a different language, simply add the language identifier to the end of the paymentUrl, i.e https://secure.mobilpay.ro/en for English
-$paymentUrl = 'http://sandboxsecure.mobilpay.ro';
+$paymentUrl = 'https://sandboxsecure.mobilpay.ro';
 //$paymentUrl = 'https://secure.mobilpay.ro';
 // this is the path on your server to the public certificate. You may download this from Admin -> Conturi de comerciant -> Detalii -> Setari securitate
 $x509FilePath 	= 'i.e: /home/certificates/public.cer';
