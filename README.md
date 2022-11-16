@@ -26,10 +26,10 @@ In order to send the payment request to NETOPIA Payments , you need to encrypt t
         <?xml version="1.0" encoding="utf-8"?>
         <order type="card" id="string64" timestamp="YYYYmmddHHiiss">
             <signature>XXXX-XXXX-XXXX-XXXX-XXXX</signature>
-            <invoice currency="RON" amount="XX.YY" installments=”R1,R2”
-            selected_installments=”R2” customer_type=”2”
-            customer_id=”internal_id” token_id=”token_identifier”
-            pan_masked=”NNNN”>
+            <invoice currency="RON" amount="XX.YY" installments="R1,R2"
+            selected_installments="R2" customer_type="2"
+            customer_id="internal_id" token_id="token_identifier"
+            pan_masked="NNNN">
                 <details>
                     Payment Details
                 </details>
