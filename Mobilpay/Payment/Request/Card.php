@@ -66,6 +66,12 @@ class Mobilpay_Payment_Request_Card extends Mobilpay_Payment_Request_Abstract
 		
 		$xmlElem			= $this->invoice->createXmlElement($this->_xmlDoc);
 		$rootElem->appendChild($xmlElem);
+		if($this->ipnCipher !== null)
+		{
+			$xmlElem = $this->_xmlDoc->createElement('ipn_cipher');
+			$xmlElem->nodeValue = $this->ipnCipher;
+			$rootElem->appendChild($xmlElem);	
+		}
 		
 		if(is_array($this->params) && sizeof($this->params) > 0)
 		{
