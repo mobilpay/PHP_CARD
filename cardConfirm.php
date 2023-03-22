@@ -8,6 +8,16 @@ require_once 'Mobilpay/Payment/Address.php';
 $errorCode 		= 0;
 $errorType		= Mobilpay_Payment_Request_Abstract::CONFIRM_ERROR_TYPE_NONE;
 $errorMessage	= '';
+$cipher     = 'rc4';
+$iv         = null;
+if(array_key_exists('cipher', $_POST))
+{
+    $cipher = $_POST['cipher'];
+    if(array_key_exists('iv', $_POST))
+    {
+        $iv = $_POST['iv'];
+    }
+}
 
 if (strcasecmp($_SERVER['REQUEST_METHOD'], 'post') == 0)
 {
@@ -19,7 +29,7 @@ if (strcasecmp($_SERVER['REQUEST_METHOD'], 'post') == 0)
 		
 		try
 		{
-		$objPmReq = Mobilpay_Payment_Request_Abstract::factoryFromEncrypted($_POST['env_key'], $_POST['data'], $privateKeyFilePath);
+		$objPmReq = Mobilpay_Payment_Request_Abstract::factoryFromEncrypted($_POST['env_key'], $_POST['data'], $privateKeyFilePath, null, $cipher, $iv);
 		#uncomment the line below in order to see the content of the request
 		//print_r($objPmReq);
 		$rrn = $objPmReq->objPmNotify->rrn;
