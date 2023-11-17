@@ -14,6 +14,10 @@ The user will be redirected from the Merchant's website to NETOPIA Payments serv
 payment encryption
     - data : encrypted data
  (see the openssl_seal function in PHP)
+
+## Requirements
+* PHP 7+
+* openssl and dom extensions
     
 ## Where to send the Request
 - Live : https://secure.mobilpay.ro
