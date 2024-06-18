@@ -14,6 +14,8 @@ The user will be redirected from the Merchant's website to NETOPIA Payments serv
 payment encryption
     - data : encrypted data
  (see the openssl_seal function in PHP)
+    
+    Depending on your set-up you might also need to send **cipher**: cipher algo used for encryption and **iv**: initialization vector
 
 ## Requirements
 * PHP 7+
